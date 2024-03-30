@@ -163,7 +163,6 @@ class Person(Scraper):
                     work_times_elem = res[1] if len(res) > 1 else None
                     location_elem = res[2] if len(res) > 2 else None
 
-
                     location = location_elem.find_element(By.XPATH,"*").text if location_elem else None
                     position_title = position_title_elem.find_element(By.XPATH,"*").find_element(By.CLASS_NAME,"visually-hidden").text if position_title_elem else ""
                     work_times = work_times_elem.find_element(By.XPATH,"*").text if work_times_elem else ""
@@ -171,6 +170,11 @@ class Person(Scraper):
                     duration = work_times.split("·")[1].strip() if len(work_times.split("·")) > 1 else None
                     from_date = " ".join(times.split(" ")[:2]) if times else ""
                     to_date = " ".join(times.split(" ")[3:]) if times else ""
+
+                    try:
+                        description = description.find_element(By.CLASS_NAME, "pvs-list").find_element(By.CLASS_NAME, "visually-hidden").text
+                    except:
+                        description = ""
 
                     experience = Experience(
                         position_title=position_title,
@@ -229,7 +233,6 @@ class Person(Scraper):
             else:
                 from_date = None
                 to_date = None
-
 
 
             description = position_summary_text.text if position_summary_text else ""
