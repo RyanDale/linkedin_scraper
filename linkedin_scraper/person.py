@@ -202,7 +202,7 @@ class Person(Scraper):
         self.scroll_to_bottom()
         main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
         for position in main_list.find_elements(By.CLASS_NAME,"pvs-list__paged-list-item"):
-            institution_logo_elem, position_details = position.find_elements(By.XPATH,"*")
+            institution_logo_elem, position_details = position.find_element(By.TAG_NAME,"div").find_element(By.TAG_NAME,"div").find_elements(By.XPATH,"*")
 
             # company elem
             institution_linkedin_url = institution_logo_elem.find_element(By.XPATH,"*").get_attribute("href")
