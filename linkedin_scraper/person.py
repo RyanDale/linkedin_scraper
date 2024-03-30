@@ -115,7 +115,7 @@ class Person(Scraper):
         self.scroll_to_bottom()
         main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
         for position in main_list.find_elements(By.XPATH,"li"):
-            position = position.find_element(By.CLASS_NAME,"pvs-list__paged-list-item").find_element(By.TAG_NAME,"div").find_element(By.TAG_NAME,"div")
+            position = position.find_element(By.TAG_NAME,"div").find_element(By.TAG_NAME,"div")
             company_logo_elem, position_details = position.find_elements(By.XPATH,"*")
 
             # company elem
@@ -143,6 +143,11 @@ class Person(Scraper):
                     company = outer_positions[0].find_element(By.TAG_NAME,"span").text
                     work_times = outer_positions[1].find_element(By.TAG_NAME,"span").text
                     location = outer_positions[2].find_element(By.TAG_NAME,"span").text
+            elif len(outer_positions) == 2:
+                    position_title = ""
+                    company = outer_positions[0].find_element(By.TAG_NAME,"span").text
+                    work_times = outer_positions[1].find_element(By.TAG_NAME,"span").text
+                    location = ""
 
             times = work_times.split("·")[0].strip() if work_times else ""
             duration = work_times.split("·")[1].strip() if len(work_times.split("·")) > 1 else None
@@ -160,7 +165,7 @@ class Person(Scraper):
 
 
                     location = location_elem.find_element(By.XPATH,"*").text if location_elem else None
-                    position_title = position_title_elem.find_element(By.XPATH,"*").find_element(By.TAG_NAME,"*").text if position_title_elem else ""
+                    position_title = position_title_elem.find_element(By.XPATH,"*").find_element(By.CLASS_NAME,"visually-hidden").text if position_title_elem else ""
                     work_times = work_times_elem.find_element(By.XPATH,"*").text if work_times_elem else ""
                     times = work_times.split("·")[0].strip() if work_times else ""
                     duration = work_times.split("·")[1].strip() if len(work_times.split("·")) > 1 else None
