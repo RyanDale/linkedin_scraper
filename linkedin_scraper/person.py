@@ -115,7 +115,7 @@ class Person(Scraper):
         self.scroll_to_bottom()
         main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
         for position in main_list.find_elements(By.XPATH,"li"):
-            position = position.find_element(By.CLASS_NAME,"pvs-entity--padded")
+            position = position.find_element(By.CLASS_NAME,"pvs-list__paged-list-item")
             company_logo_elem, position_details = position.find_elements(By.XPATH,"*")
 
             # company elem
