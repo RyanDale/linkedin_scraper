@@ -209,7 +209,12 @@ class Person(Scraper):
         main = self.wait_for_element_to_load(by=By.TAG_NAME, name="main")
         self.scroll_to_half()
         self.scroll_to_bottom()
-        main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
+        try:
+            main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
+        except:
+            # Skip section, no education found
+            return
+
         for position in main_list.find_elements(By.CLASS_NAME,"pvs-list__paged-list-item"):
             institution_logo_elem, position_details = position.find_element(By.TAG_NAME,"div").find_element(By.TAG_NAME,"div").find_elements(By.XPATH,"*")
 
