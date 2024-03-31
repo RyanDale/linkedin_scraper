@@ -255,7 +255,8 @@ class Person(Scraper):
     def get_name_and_location(self):
         top_panel = self.driver.find_element(By.XPATH, "//*[@class='mt2 relative']")
         self.name = top_panel.find_element(By.TAG_NAME, "h1").text
-        self.location = top_panel.find_element(By.XPATH, "//*[@class='text-body-small inline t-black--light break-words']")
+        location_element = top_panel.find_element(By.XPATH, "//*[@class='text-body-small inline t-black--light break-words']")
+        self.location = location_element.text if location_element else ""
 
 
     def get_about(self):
