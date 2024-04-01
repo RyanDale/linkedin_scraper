@@ -300,9 +300,9 @@ class Person(Scraper):
         # get education
         self.get_educations()
 
+        """
         driver.get(self.linkedin_url)
 
-        """
         # get interest
         try:
 
