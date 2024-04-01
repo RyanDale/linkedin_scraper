@@ -279,7 +279,6 @@ class Person(Scraper):
             )
         )
         self.focus()
-        self.wait(5)
 
         # get name and location
         self.get_name_and_location()
