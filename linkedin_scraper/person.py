@@ -303,6 +303,7 @@ class Person(Scraper):
 
         driver.get(self.linkedin_url)
 
+        """
         # get interest
         try:
 
@@ -370,6 +371,7 @@ class Person(Scraper):
                     self.add_contact(contact)
         except:
             connections = None
+        """
 
         if close_on_complete:
             driver.quit()
