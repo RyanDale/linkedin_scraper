@@ -41,6 +41,7 @@ class Person(Scraper):
         self.accomplishments = accomplishments or []
         self.also_viewed_urls = []
         self.contacts = contacts or []
+        self.linkedin_id = linkedin_id or ''
 
         if driver is None:
             try:
