@@ -26,6 +26,7 @@ class Person(Scraper):
         company=None,
         job_title=None,
         contacts=None,
+        linkedin_id=None,
         driver=None,
         get=True,
         scrape=True,
