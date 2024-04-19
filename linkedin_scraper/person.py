@@ -212,7 +212,7 @@ class Person(Scraper):
         self.scroll_to_half()
         self.scroll_to_bottom()
         try:
-            main_list = self.wait_for_element_to_load(name="pvs-list", base=main)
+            main_list = self.wait_for_element_to_load(name="pvs-list__container", base=main)
         except:
             # Skip section, no education found
             return
