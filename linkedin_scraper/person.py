@@ -115,7 +115,7 @@ class Person(Scraper):
         main = self.wait_for_element_to_load(by=By.TAG_NAME, name="main")
         self.scroll_to_half()
         self.scroll_to_bottom()
-        main_list = self.wait_for_element_to_load(name="pvs-list__container", base=main)
+        main_list = self.wait_for_element_to_load(by=By.CLASS_NAME, name="pvs-list__container", base=main)
         for position in main_list.find_elements(By.XPATH,"li"):
             position = position.find_element(By.TAG_NAME,"div").find_element(By.TAG_NAME,"div")
             company_logo_elem, position_details = position.find_elements(By.XPATH,"*")
