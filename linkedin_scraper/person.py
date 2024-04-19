@@ -157,8 +157,8 @@ class Person(Scraper):
             from_date = " ".join(times.split(" ")[:2]) if times else ""
             to_date = " ".join(times.split(" ")[3:]) if times else ""
 
-            if position_summary_text and len(position_summary_text.find_element(By.CLASS_NAME,"pvs-list").find_element(By.CLASS_NAME,"pvs-list").find_elements(By.XPATH,"li")) > 1:
-                descriptions = position_summary_text.find_element(By.CLASS_NAME,"pvs-list").find_element(By.CLASS_NAME,"pvs-list").find_elements(By.XPATH,"li")
+            if position_summary_text and len(position_summary_text.find_element(By.CLASS_NAME,"pvs-list__container").find_element(By.CLASS_NAME,"pvs-list__container").find_elements(By.XPATH,"li")) > 1:
+                descriptions = position_summary_text.find_element(By.CLASS_NAME,"pvs-list__container").find_element(By.CLASS_NAME,"pvs-list__container").find_elements(By.XPATH,"li")
                 for description in descriptions:
                     res = description.find_element(By.TAG_NAME,"a").find_elements(By.XPATH,"*")
                     position_title_elem = res[0] if len(res) > 0 else None
@@ -174,7 +174,7 @@ class Person(Scraper):
                     to_date = " ".join(times.split(" ")[3:]) if times else ""
 
                     try:
-                        description = description.find_element(By.CLASS_NAME, "pvs-list").find_element(By.CLASS_NAME, "visually-hidden").text
+                        description = description.find_element(By.CLASS_NAME, "pvs-list__container").find_element(By.CLASS_NAME, "visually-hidden").text
                     except:
                         description = ""
 
