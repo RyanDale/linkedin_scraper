@@ -300,7 +300,10 @@ class Person(Scraper):
         self.get_experiences()
 
         # get education
-        self.get_educations()
+        try:
+            self.get_educations()
+        except:
+            print ("Error pulling education")
 
         """
         driver.get(self.linkedin_url)
